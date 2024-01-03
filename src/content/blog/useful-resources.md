@@ -2,7 +2,7 @@
 title: "Useful Links"
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'August 28 2019'
-heroImage: '/blog-placeholder-3.jpg'
+heroImage: 'https://images.unsplash.com/photo-1531376653594-e9bcf0f0c65b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDJ8fGludGVydHdpbmVkfGVufDB8fHx8MTYyNDY0NDc2MQ&ixlib=rb-1.2.1&q=80&w=2000'
 ---
 
 Below is a collection of other posts I've found very useful and frequently refer
