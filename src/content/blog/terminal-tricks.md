@@ -1,5 +1,5 @@
 ---
-title: "Terminal tricks: Handy Shourtcuts"
+title: "Terminal tricks: Handy Shortcuts"
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'August 3 2017'
 heroImage: '/blog-placeholder-3.jpg'
