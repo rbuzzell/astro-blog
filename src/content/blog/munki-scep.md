@@ -38,7 +38,7 @@ Since that docker container doesn't work yet, the first thing when configuring S
  * `cd /var/lib/scep/depot; scepserver -ca init`
   * This should be run with some more flags as provided by the [micromdm/scep](https://github.com/micromdm/scep) documentation.
 3. I'm running the server on Ubuntu 16.04, so I have systemd available. I wrote a systemd file similar to this one for so systemd could start and stop the service automatically. This should be modified to include a `-challenge` to suit your environment.
-```
+```ini
     [Unit]
     Description=Micromdm SCEP Server
     After=syslog.target network.target
@@ -54,15 +54,15 @@ That should get the server running on port 8080 at `https://localhost:8080/scep`
 
 I also have a block into the config that adds support to apache for this
 
-```
-	SSLCACertificateFile    /var/lib/scep/depot/ca.pem
-	<Directory /var/www/munki_repo>
-		Options -Indexes
-		# Make Client auth optional while internal
-		SSLVerifyClient optional
-		Require ip 172.16.0.0/12
-		Satisfy any
-	</Directory>
+```apache
+SSLCACertificateFile    /var/lib/scep/depot/ca.pem
+<Directory /var/www/munki_repo>
+    Options -Indexes
+    # Make Client auth optional while internal
+    SSLVerifyClient optional
+    Require ip 172.16.0.0/12
+    Satisfy any
+</Directory>
 ``` 
 
 Next is the client. 
