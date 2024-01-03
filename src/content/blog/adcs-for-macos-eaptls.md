@@ -1,7 +1,7 @@
 ---
 title: "Using AD CS for machine-based EAP-TLS on macOS"
 description: 'Lorem ipsum dolor sit amet'
-pubDate: 'May 23 2019'
+pubDate: 'August 28 2019'
 heroImage: '/blog-placeholder-3.jpg'
 ---
 
