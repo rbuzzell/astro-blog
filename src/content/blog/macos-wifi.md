@@ -112,5 +112,8 @@ Those three changes should give you everything you be all you need to change to 
 
 ```
 
-# Update 1/23/2018:
-As a note to myself: If you forget what a base64 encoded certificate is again and it's an emergency again, it's the bits in a PEM encoded certificate that are between `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`"
+#### Update 1/23/2018:
+As a note to myself: If I forget what a base64 encoded certificate is again and it's an emergency again, this profile specifically wants the bits in a PEM certificate that are between `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`
+
+#### Update 1/3/2024:
+I'm not sure Munki does profile installation anymore. macOS fell off my radar and was looking at this post while moving to Astro

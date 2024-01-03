@@ -1,7 +1,7 @@
 ---
 title: 'Vim Tricks: Visual Block Mode'
 description: 'Lorem ipsum dolor sit amet'
-pubDate: 'March 30 2018'
+pubDate: 'August 3 2017'
 heroImage: '/blog-placeholder-3.jpg'
 ---
 I thought I'd write down one of my favorite vim tricks. This one is to change or comment a vertical block of text all at once, instead of one line at a time.
