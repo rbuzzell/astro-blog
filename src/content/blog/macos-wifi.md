@@ -12,7 +12,7 @@ We solved this problem at my last job, and after an afternoon of beating my head
 3. The SSID of the network you wish them to connect to.
 
 Those three changes should give you everything you be all you need to change to get it working, but you should probably provide reasonable identifiers and descriptions. You should make sure the WiFi is switched on, and that you install this as a system profile using Munki (or an MDM) or by using `sudo profiles -IF ./com.org.loginWindowWirelessProfile.mobileconfig`
-```
+```xml
 <?xml version=\"1.0\" encoding=\"UTF-8\"?>
 <!DOCTYPE plist PUBLIC "- Apple DTD PLIST 1.0 EN" 
 "http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
