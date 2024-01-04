@@ -30,7 +30,9 @@ export default defineConfig({
 		sitemap(),
 		tailwind()
 	],
-	alias: {
-		stream: 'node:stream'
+	vite: {
+		alias: {
+			stream: 'node:stream'
+		}
 	}
 })
