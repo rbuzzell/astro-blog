@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
-import { remarkReadingTime } from './src/utils/readTime.ts'
+// import { remarkReadingTime } from './src/utils/readTime.ts'
 import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
@@ -11,7 +11,7 @@ export default defineConfig({
 	output: 'server',
 	adapter: cloudflare({ mode: "directory" }),
 	markdown: {
-		remarkPlugins: [remarkReadingTime],
+		// remarkPlugins: [remarkReadingTime],
 		drafts: true,
 		shikiConfig: {
 			theme: 'material-theme-palenight',
