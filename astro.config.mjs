@@ -33,6 +33,11 @@ export default defineConfig({
 	vite: {
 		ssr: {
 			external: ['stream', 'util']
-		}	
+		},
+		resolve:{
+			alias: {
+				stream: 'stream-browserify'
+			}
+		}
 	}
 })

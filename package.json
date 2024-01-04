@@ -35,7 +35,8 @@
 	"dependencies": {
 		"@astrojs/cloudflare": "^8.0.1",
 		"@astrojs/rss": "4.0.1",
-		"astro": "4.0.8"
+		"astro": "4.0.8",
+		"stream-browserify": "^3.0.0"
 	},
 	"devDependencies": {
 		"@astrojs/mdx": "2.0.3",
