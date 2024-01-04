@@ -1,0 +1,18 @@
+---
+heroImage: /src/assets/images/Untitled.png
+category: Linux
+description: Fedora 25 in Syslinux PXE
+pubDate: 2017-08-03T04:00:00.000Z
+tags:
+  - pxe boot
+title: Fedora 25 in Syslinux PXE
+---
+
+Just a brief entry about what the pxelinux.cfg related to your newer fedora installs should look like. I make the assumption that everything should be pulled from an http(s) mirror server, and nothing should be on the local server, as that is how I tend to setup my pxeboot environments.
+
+```
+LABEL fedora-linux
+    MENU LABEL Install Fedora 25
+    KERNEL http://mirror.rit.edu/fedora/fedora/linux/releases/25/Workstation/x86_64/os/images/pxeboot/vmlinuz
+    APPEND initrd=http://mirror.rit.edu/fedora/fedora/linux/releases/25/Workstation/x86_64/os/images/pxeboot/initrd.img inst.stage2=http://mirror.rit.edu/fedora/fedora/linux/releases/25/Workstation/x86_64/os ip=dhcp
+```
