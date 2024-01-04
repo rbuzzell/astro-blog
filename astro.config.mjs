@@ -29,5 +29,8 @@ export default defineConfig({
 		}),
 		sitemap(),
 		tailwind()
-	]
+	],
+	alias: {
+		stream: 'node:stream'
+	}
 })
