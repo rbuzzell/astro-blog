@@ -16,6 +16,8 @@ export async function getStaticPaths() {
 const { tag } = Astro.props
 
 const posts = await getPostByTag(tag)
+
+export const prerender = true
 ---
 
 <BaseLayout title={tag}>

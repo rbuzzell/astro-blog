@@ -2,14 +2,14 @@ import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
-// import { remarkReadingTime } from './src/utils/readTime.ts'
+import { remarkReadingTime } from './src/utils/readTime.ts'
 import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://astro.buzzell.io', // Write here your website url
 	output: 'server',
-	adapter: cloudflare({ mode: "directory" }),
+	adapter: cloudflare(),
 	markdown: {
 		// remarkPlugins: [remarkReadingTime],
 		drafts: true,
@@ -29,15 +29,5 @@ export default defineConfig({
 		}),
 		sitemap(),
 		tailwind()
-	],
-	vite: {
-		ssr: {
-			external: ['stream', 'util']
-		},
-		resolve:{
-			alias: {
-				stream: 'stream-browserify'
-			}
-		}
-	}
+	]
 })

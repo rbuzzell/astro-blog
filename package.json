@@ -36,6 +36,7 @@
 		"@astrojs/cloudflare": "^8.0.1",
 		"@astrojs/rss": "4.0.1",
 		"astro": "4.0.8",
+		"reading-time-estimator": "^1.9.4",
 		"stream-browserify": "^3.0.0"
 	},
 	"devDependencies": {
