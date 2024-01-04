@@ -31,10 +31,8 @@ export default defineConfig({
 		tailwind()
 	],
 	vite: {
-		resolve: {
-			alias: {
-				stream: 'node:stream'
-			}
+		ssr: {
+			external: ['stream', 'util']
 		}	
 	}
 })
