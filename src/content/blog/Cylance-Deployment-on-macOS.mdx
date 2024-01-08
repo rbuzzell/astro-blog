@@ -1,5 +1,5 @@
 ---
-heroImage: /src/assets/images/Untitled.png
+heroImage: /src/assets/images/brett-jordan-eYNcM172214-unsplash.jpg
 category: macOS
 description: Cylance Deployment on macOS
 pubDate: 2017-08-03T04:00:00.000Z
@@ -16,7 +16,7 @@ The manual install directions it came with were
 1. Download the package
 2. Open terminal and run
 
-```
+```shell
 cd ~/Downloads/
 cat > cyagent_install_token <<EOF
 B39D7692-572F-41D4-BBC8-3D8F39E542DE
@@ -29,7 +29,7 @@ sudo installer -pkg CylancePROTECT.pkg -target /
 
 This was an overly manual process for what needs to be a Munki based deployment. Upon using [Suspicous Package](http://www.mothersruin.com/software/SuspiciousPackage/) to look at the postinstall script I noticed these blocks of code
 
-```
+```shell
 #!/bin/sh
 
 INSTALL_TOKEN_FILE="/tmp/YvUnIpzc2omyt1ln"
@@ -39,7 +39,7 @@ then
 fi
 ```
 
-```
+```shell
 if [ -e "/tmp/YvUnIpzc2omyt1ln" ]
 then
    /bin/rm /tmp/YvUnIpzc2omyt1ln
@@ -48,7 +48,7 @@ fi
 
 Ah-ha! It has a hardcoded location where it expects that file to exist. All we have to do is write a preinstall script in Munki that makes that file exist.
 
-```
+```shell
 #!/bin/sh
 
 cat > /tmp/YvUnIpzc2omyt1ln << EOF
@@ -58,3 +58,5 @@ EOF
 ```
 
 After testing it appers this was all it took to get it to deploy with Munki.
+
+Photo by [Brett Jordan](https://unsplash.com/@brett_jordan?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/microsoft-windows-2000-professional-disc-eYNcM172214?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)

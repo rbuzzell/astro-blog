@@ -1,5 +1,5 @@
 ---
-heroImage: /src/assets/images/Untitled.png
+heroImage: /src/assets/images/quino-al-xEy9QNUCdRI-unsplash.jpg
 category: macOS
 description: Creating a SCEP service for Munki using MicroMDM's SCEP Project
 pubDate: 2017-08-03T04:00:00.000Z
@@ -25,39 +25,39 @@ Since that docker container doesn't work yet, the first thing when configuring S
 
 1. Create the $GOPATH variable in your shell for go to use.
 
-* `export GOPATH=~/Projects/GoProjects`
+- `export GOPATH=~/Projects/GoProjects`
 
 1. Install the Go compiler.
 
-* `apt install golang`
-* `brew install go`
-* `yum install golang`
+- `apt install golang`
+- `brew install go`
+- `yum install golang`
 
 1. Install [Glide](https://github.com/Masterminds/glide) for dependency resolution. Glide is the Go equivalent to pip, cpan, or npm.
 
-* curl [https://glide.sh/get](https://glide.sh/get) | sh
+- curl [https://glide.sh/get](https://glide.sh/get) | sh
 
 1. Install the dependancies
 
-* `cd $GOPATH/src/github.com/micromdm/scep/`
-* `glide install`
+- `cd $GOPATH/src/github.com/micromdm/scep/`
+- `glide install`
 
 1. Compile the client or server binary. Note that you will have to compile the client and server separately on each OS you plan to run it on
 
-* cd `$GOPATH/src/github.com/micromdm/scep/cmd/scepserver`
-* `go build`
+- cd `$GOPATH/src/github.com/micromdm/scep/cmd/scepserver`
+- `go build`
 
 ## Server
 
 1. Place the binary in a useful location
 
-* `cp scepserver /usr/sbin`
+- `cp scepserver /usr/sbin`
 
 1. Create the depot for the server to store the certificate information in
 
-* `mkdir -p /var/lib/scep/depot`
-* `cd /var/lib/scep/depot; scepserver -ca init`
-* This should be run with some more flags as provided by the [micromdm/scep](https://github.com/micromdm/scep) documentation.
+- `mkdir -p /var/lib/scep/depot`
+- `cd /var/lib/scep/depot; scepserver -ca init`
+- This should be run with some more flags as provided by the [micromdm/scep](https://github.com/micromdm/scep) documentation.
 
 1. I'm running the server on Ubuntu 16.04, so I have systemd available. I wrote a systemd file similar to this one for so systemd could start and stop the service automatically. This should be modified to include a `-challenge` to suit your environment.
 
@@ -78,7 +78,7 @@ That should get the server running on port 8080 at `https://localhost:8080/scep`
 
 I also have a block into the config that adds support to apache for this
 
-```apache
+```xml
 SSLCACertificateFile    /var/lib/scep/depot/ca.pem
 <Directory /var/www/munki_repo>
     Options -Indexes
@@ -95,16 +95,16 @@ Next is the client.
 
 1. Compile the client
 
-* `$GOPATH/src/github.com/micromdm/scep/cmd/scepclient`
-* `go build`
+- `$GOPATH/src/github.com/micromdm/scep/cmd/scepclient`
+- `go build`
 
 1. Place the binary in a useful location
 
-* `cp scepclient /usr/local/sbin`
+- `cp scepclient /usr/local/sbin`
 
 1. Write a script that makes a SCEP request using your freshly compiled client. I package the script, the public CA, and the client up and install them at image time, placing the script in the munki preflight.d directory installed by munkireport-php, the client in `/usr/local/sbin/`, and the cert in `/Library Managed Installs/certs`
 
-```bash
+```shell
 #!/usr/bin/env bash
 
 HOSTNAME=`scutil --get ComputerName`.company.fqdn
@@ -151,4 +151,4 @@ The client script outlined here will check for a new client certificate every ti
 
 This was my first attempt at setting up SSL client auth, for anything. It took about a week of research, trial, and error to figure out. Without the help of `@groob` & the Mac Admins Slack I never would have gotten the project working.
 
-Did I miss something? Reach out by emailing `ryan@buzzell.io` or `@rbuzzell` on the Mac Admins Slack and I'll put in a correction."
+Photo by [Quino Al](https://unsplash.com/@quinoal?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/messy-hands-sculpting-on-a-pottery-wheel-in-motion-xEy9QNUCdRI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)

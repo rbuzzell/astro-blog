@@ -1,5 +1,5 @@
 ---
-heroImage: /src/assets/images/Untitled.png
+heroImage: /src/assets/images/tim-mossholder-DZcZ4Kskq6U-unsplash.jpg
 category: macOS
 description: What is DEP?
 pubDate: 2017-08-03T04:00:00.000Z
@@ -34,7 +34,7 @@ Apple has historically been pushing MDM as a way to create and issue Configurati
 
 With a proper thin imaging workflow a machine would be unboxed, a vanilla copy of the OS installed using a tool like DeployStudio or Imagr, part of that workflow would bind to a directory service, install some bootstrapping tools, complete any MDM enrollment, and pass the software installation and OS configuration on to the bootstrapping tools like Jamf Self Service or Munki. The bootstrapping tool would then download any software from a managed repository and install it, and add any configuration profiles it's configured to.
 
-Without the ability to image a machine, these bootstrapping tools and any mdm enrollment have to be manually added after the OOBE (out of box experience) is completed. This presents two issues: Having to manually walk through the OOBE on every machine you deploy, and the introduction of [UAMDM](https://simplemdm.com/2017/11/01/user-approved-mdm-enrollment/) disabling features of your MDM until a person physically moves the cursor to the "Approve" button on the end-user's machine. There's also [UAKEL](https://developer.apple.com/library/content/technotes/tn2459/_index.html) for your kernel extensions. This *also* needs to be preformed by a person physically at the machine.
+Without the ability to image a machine, these bootstrapping tools and any mdm enrollment have to be manually added after the OOBE (out of box experience) is completed. This presents two issues: Having to manually walk through the OOBE on every machine you deploy, and the introduction of [UAMDM](https://simplemdm.com/2017/11/01/user-approved-mdm-enrollment/) disabling features of your MDM until a person physically moves the cursor to the "Approve" button on the end-user's machine. There's also [UAKEL](https://developer.apple.com/library/content/technotes/tn2459/_index.html) for your kernel extensions. This _also_ needs to be preformed by a person physically at the machine.
 
 ## DEP, Finally
 
@@ -47,3 +47,5 @@ DEP also comes with the benefit that MDM it enrolls the machine in is automatica
 ### Security addendum
 
 DEP isn't something that can be gotten around by simply wiping the machine. If a laptop is stolen then wiped, during the OOBE it will check in with Apple to see if there is a DEP configuration available, and if there is it will pull it down again or block the process waiting for authentication. If your device is marked as stolen or placed in lost mode, it will also sit at the OOBE until unlocked or returned.
+
+Photo by [Tim Mossholder](https://unsplash.com/@timmossholder?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/text-DZcZ4Kskq6U?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
