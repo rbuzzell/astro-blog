@@ -3,7 +3,7 @@ export const CATEGORIES = [
 	'macOS',
 	'EntraID',
 	'Misc Ramblings',
-	"CI-CD",
-	"Linux",
-	"Windows"
+	'CICD',
+	'Linux',
+	'Windows'
 ] as const
