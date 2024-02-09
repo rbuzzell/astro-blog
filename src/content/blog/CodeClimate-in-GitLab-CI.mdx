@@ -1,0 +1,69 @@
+---
+heroImage: /src/assets/images/pankaj-patel-ZV_64LdGoao-unsplash.jpg
+category: CICD
+description: CodeClimate in GitLab CI
+pubDate: 2017-08-03T04:00:00.000Z
+tags:
+  - gitlab
+title: CodeClimate in GitLab CI
+---
+
+Recently I tried pulling code climate into GitLab CE's CI. This became slightly problematic since docker-in-docker wasn't working properly. I installed it according to the site directions, but the config didn't work. After about a day of tinkering, configuring it this way appears to work pretty well.
+
+`.gitlab-vi.yml`
+
+```yaml
+codeclimate:
+  image: docker:latest
+  variables:
+    DOCKER_DRIVER: overlay
+  services:
+    - docker:dind
+  script:
+    - docker pull codeclimate/codeclimate
+    - VOLUME_PATH=/tmp/builds"$(echo $PWD | sed 's|^/[^/]*||')"
+    - docker run -v /tmp/cc:/tmp/cc -v $VOLUME_PATH:/code -v /var/run/docker.sock:/var/run/docker.sock codeclimate/codeclimate validate-config
+    - ls -lash $PWD
+    - echo $PWD
+    - docker run --env CODECLIMATE_CODE="$VOLUME_PATH" -v /tmp/cc:/tmp/cc -v $VOLUME_PATH:/code -v /var/run/docker.sock:/var/run/docker.sock codeclimate/codeclimate analyze
+  artifacts:
+    paths: [codeclimate.json]%
+```
+
+`/etc/gitlab-runner/config.toml`
+
+```yaml
+concurrent = 1
+check_interval = 0
+
+[[runners]]
+name = "gitlabrunner-01"
+url = "https://gitlab.gqdn/"
+token = "token"
+executor = "docker"
+[runners.docker]
+tls_verify = false
+image = "docker:latest"
+privileged = true
+disable_cache = false
+volumes = ["/cache"]
+shm_size = 0
+[runners.cache]
+
+[[runners]]
+name = "Ubuntu 16.04 Runner 01"
+url = "https://gitlab.fqdn/"
+token = "token"
+executor = "docker"
+[runners.docker]
+tls_verify = false
+image = "docker:latest"
+privileged = true
+disable_cache = false
+cache_dir = "cache"
+volumes = ["/cache", "/var/run/docker.sock:/var/run/docker.sock", "/tmp/builds:/builds"]
+shm_size = 0
+[runners.cache]
+```
+
+Photo by [Pankaj Patel](https://unsplash.com/@pankajpatel?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/gitlab-application-screengrab-ZV_64LdGoao?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)

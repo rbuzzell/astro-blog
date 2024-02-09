@@ -1,0 +1,20 @@
+---
+heroImage: /src/assets/images/joshua-coleman-_yVRLC75Ma8-unsplash.jpg
+category: Linux
+description: 'Fedora 25 in iPXE '
+pubDate: 2017-08-03T04:00:00.000Z
+tags:
+  - pxe boot
+title: 'Fedora 25 in iPXE '
+---
+
+As a followup to my earlier brief post about Fedora 25 in syslinux pxe, this one adds Fedora 25 as a function in ipxe.
+
+```
+    :fedora25
+    initrd http://mirror.rit.edu/fedora/fedora/linux/releases/25/Workstation/x86_64/os/images/pxeboot/initrd.img
+    chain http://mirror.rit.edu/fedora/fedora/linux/releases/25/Workstation/x86_64/os/images/pxeboot/vmlinuz
+    inst.stage2=http://mirror.rit.edu/fedora/fedora/linux/releases/25/Workstation/x86_64/os ip=dhcp
+```
+
+Photo by [JOSHUA COLEMAN](https://unsplash.com/@joshstyle?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/assorted-fedora-hat-lot-_yVRLC75Ma8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)

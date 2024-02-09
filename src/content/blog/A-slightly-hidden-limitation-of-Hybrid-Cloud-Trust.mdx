@@ -1,0 +1,33 @@
+---
+heroImage: /src/assets/images/michael-dziedzic-1bjsASjhfkE-unsplash.jpg
+category: EntraID
+description: A slightly hidden limitation of Hybrid Cloud Trust
+pubDate: 2022-07-27T04:00:00.000Z
+tags:
+  - hybrid trust
+title: A slightly hidden limitation of Hybrid Cloud Trust
+---
+
+There's a dependency tree in the MS documentation that's slightly buried in the
+MS Documentation. The page [Hybrid Cloud Trust Deployment](https://docs.microsoft.com/en-us/windows/security/identity-protection/hello-for-business/hello-hybrid-cloud-trust)
+has a pre-req that links back to the setup directions to Enable passwordless
+security key [sign-in to on-premises resources by using Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-authentication-passwordless-security-key-on-premises#install-the-azure-ad-kerberos-powershell-module). That page in turn has a link over to the FAQs for FIDO2. [Deployment frequently
+asked questions (FAQs) for hybrid FIDO2 security keys in Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-authentication-passwordless-faqs#fido2-security-key-sign-in-isnt-working-for-my-domain-admin-or-other-high-privilege-accounts-why)
+
+At the bottom of that FAQ is a question with an easy answer:
+
+> FIDO2 security key sign-in isn't working for my Domain Admin or other high
+> privilege accounts. Why?
+> The default security policy doesn't grant Azure AD permission to sign high
+> privilege accounts on to on-premises resources.
+
+What does a random FIDO2 FAQ have to do with a Kerberos trust? Well as it turns
+out, that answer also applicable to Hybrid Cloud trust because it's an RODC
+limitation, and both the question and answer are painfully far away from the
+Hybrid Cloud Trust page.
+
+TL;DR:
+Don't expect HCT to work on an account in Domain Admins, Enterprise Admins, or
+Schema Admins.
+
+Photo by [Michael Dziedzic](https://unsplash.com/@lazycreekimages?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/skeleton-key-surround-with-dry-leaves-1bjsASjhfkE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
